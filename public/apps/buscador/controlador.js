@@ -28,6 +28,12 @@ function comandos(comando){
 
                break;
 
+               case "$carga":               
+
+                  cargar();
+
+                break;
+
           }
 
 }
@@ -98,6 +104,19 @@ function buscar(){
 
   });
 
+
+}
+
+
+function cargar(){
+
+    socket.emit("cargar",{ nombre : "blackberry 9630" , id : "ad8dad8asd70", tipo : "movil" , categoria : "celulares>qwerty>blackberry>9630"});
+
+    socket.on("carga",function(data){
+
+       console.log(data.status);
+
+    });
 
 }
 

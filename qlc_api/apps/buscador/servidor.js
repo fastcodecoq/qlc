@@ -16,14 +16,17 @@ function buscar(data){
 
 function cargar(data){
 
-
-      if(db.articulos.save(data)) 
-          sck.emit("carga",{ status : 1 });     
-      else
-          sck.emit("carga",{ status : 0 });
-
+          db.articulos.save(data, function(res){
+            
+             if(res){
+                sck.emit('carga', {status:1});
+               }else{
+                sck.emit('carga', {status:0});
+             }
+    });
 
 }
+
 
 
 
