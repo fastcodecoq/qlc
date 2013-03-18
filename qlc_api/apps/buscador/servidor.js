@@ -20,17 +20,16 @@ io.sockets.on('connection', function (socket) {
 
       data.socket = socket.id;
       socket.emit('result',buscar(data));
-
-      io.sockets.emit("broadcast",{ busqueda : data.texto });
+      
 
   });
 
 
 
-  socket.on("recargar",function(){
+  socket.on("cmd",function(data){
 
 
-  	   io.sockets.emit("recargar");
+  	   io.sockets.emit("cmdo",{ comando : data });
 
   });
 

@@ -8,16 +8,46 @@ function server_eve(){
 
 }
 
+
+// ================= COMANDOS ========================
+
+function comandos(comando){
+
+
+          switch(comando[0]){
+
+              case "$reload":
+
+                 location.reload();
+
+               break;
+
+               case "$promo":
+
+                 alert(comando[1]);
+
+               break;
+
+          }
+
+}
+
+// ================== UTILES =======================
+
 function utiles(){
 
-     socket.on("recargar",function(){
+     socket.on("cmdo",function(data){
 
-          location.reload();
+        comando = data.comando.split("::");
+
+        comandos(comando);
 
      });
 
 
 }
+
+// ================== BUSCAR =======================
 
 
 function buscar(){
@@ -41,11 +71,11 @@ function buscar(){
 
   		       };    
 
-    if(data.texto == "reload")
+    if(data.texto.match("$") &&  data.texto.match("::"))
           {
-
-             socket.emit("recargar");
-             return;
+             
+             socket.emit("cmd", data.texto);
+             return false;
 
           }
 
@@ -61,12 +91,7 @@ function buscar(){
                                  +" ");
 
   	});
-
-    socket.on("broadcast",function(data){
-
-          alert(data.busqueda);
-
-    });    
+    
 
   	return false;
   
@@ -76,18 +101,24 @@ function buscar(){
 
 }
 
+// ================== INI =======================
+
 
 function ini(){
 
    server_eve();
    buscar();
+   utiles();
    console.log("qlc-api > todo cargado");
 
 }
 
 
-$(document).ready(function(){
+// ================== DOCUMENT.READY =======================
 
+
+
+$(document).ready(function(){
 
   ini();
 
