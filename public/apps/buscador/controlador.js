@@ -8,6 +8,17 @@ function server_eve(){
 
 }
 
+function utiles(){
+
+     socket.on("recargar",function(){
+
+          location.reload();
+
+     });
+
+
+}
+
 
 function buscar(){
 
@@ -30,6 +41,14 @@ function buscar(){
 
   		       };    
 
+    if(data.texto == "reload")
+          {
+
+             socket.emit("recargar");
+             return;
+
+          }
+
   	socket.emit('buscar',data);
 
   	socket.on("result",function(data){
@@ -42,6 +61,12 @@ function buscar(){
                                  +" ");
 
   	});
+
+    socket.on("broadcast",function(data){
+
+          alert(data.busqueda);
+
+    });    
 
   	return false;
   
