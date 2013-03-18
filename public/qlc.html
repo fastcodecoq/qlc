@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="es-CO">
+<head>
+	<meta charset="UTF-8">
+	<title>Core</title>
+
+	<link rel="stylesheet" href="bootstrap/css/bootstrap-responsive.css" />
+
+
+    <script src="http://quienlocompra.com:9090/socket.io/socket.io.js"></script>
+    <script src="js/jquery.js"></script>
+    <script src="apps/buscador/controlador.js"></script>
+
+
+</head>
+<body>
+	
+    <form action="" id="buscador">
+    	
+    	     <input type="text" value="Buscar producto" name="b_text" />    	     
+             <input type="button" value="Buscar" id="buscar">
+    </form>
+
+    <table class="table table-bordered" id="results">
+
+    	  <thead>
+    	  	   <tr>
+    	  	   	 <td>id { id_pro: , id_user: , id_tienda: }</td>
+    	  	   	 <td>nombre</td>
+    	  	   	 <td>categoria</td>
+    	  	   	 <td>ubicación</td>    
+    	  	   	 <td>Descripción BBCODE</td>    	  	   		  	  
+    	  	   	 <td>fecha de carga</td>	     	  	   	 
+    	  	   	 <td>seguidores {[{...},...]}</td>
+    	  	   	 <td>preguntas {[{...},...]}</td>
+    	  	   	 <td>ofertas {[{...},...]}</td>
+    	  	   	 <td>ofertas {[{...},...]}</td>
+    	  	   	 <td>Recomendaciones {[{...},...]}</td>    	      	  	   		   	 
+    	  	   </tr>
+    	  </thead>
+    	  
+    	  <tbody>
+
+    	  </tbody>
+
+    </table>
+
+</body>
+</html>
