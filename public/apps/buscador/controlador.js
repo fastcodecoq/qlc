@@ -99,14 +99,16 @@ function buscar(){
   		  
         var salida = "";
         $("#results tbody").html(salida);
+
+        console.log(data);
    
       for(i= 0 ; i < data.length ; i++) {
 
-        salida += " " +
+      $("#results tbody").append(
 
                 +"<tr>"+  
 
-                +"<td>" + data[i].id + "</td>" +
+                +"<td>" + data[i].id.toString() + "</td>" +
                 +"<td>" + data[i].nombre + "</td>" +
                 +"<td>" + data[i].categoria + "</td>" +
                 +"<td>" + data[i]._id + "</td>" +
@@ -122,11 +124,13 @@ function buscar(){
 
                 +"</tr>"+
                         
-                         +" ";                      
+                        +" "
+
+                  );                    
 
       }
 
-              $("#results tbody").html(salida);
+             
       
 
   	});
