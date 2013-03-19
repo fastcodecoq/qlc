@@ -3,8 +3,9 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Core</title>
+    
+    <link rel="stylesheet" href="css/bootstrap.css" />
 
-	<link rel="stylesheet" href="bootstrap/css/bootstrap-responsive.css" />
 
 
     <script src="http://quienlocompra.com:9090/socket.io/socket.io.js"></script>
@@ -13,13 +14,85 @@
     <script src="apps/buscador/controlador.js"></script>
 
 
+<style>
+
+
+   .overlay{
+    
+      position: absolute;
+      width:100%;
+      height: 100%;
+      margin: 0;
+      top:0;
+      left:0;
+      background: rgba(0,0,0,.20);
+      display:none;
+
+   }
+
+     #carga-art{
+        
+          margin: 100px auto;
+          padding: 15px;
+          border-radius: 3px;
+          border: 1px solid #ebebeb;
+          background: white;
+
+
+     }
+
+     #carga-art td{
+        
+          padding: 8px;
+
+     }
+
+     table#results{
+
+            max-height: 300px !important;
+            overflow: auto;
+
+     }
+
+</style>
+
+<script>
+      
+      function togleShow(){
+
+        alert("ok")
+
+            $("button[rel='togle-show']").click(function(){
+
+                    $(".togle-show").fadeIn();
+
+            });
+
+
+            $(document).ready(function(){
+
+                togleShow();                
+
+            });
+
+      }
+
+</script>
+
+
 </head>
+
 <body>
+
+    <br />
+    <br />
+    <br />
 	
     <form action="" id="buscador">
-    	
-    	     <input type="text" value="Buscar producto" name="b_text" />    	     
-             <input type="button" value="Buscar" id="buscar">
+    	     
+    	     <input type="text" placeholder="Buscar producto" value="" name="b_text" />    	     
+             <input type="button" value="Buscar" id="buscar" class="btn btn-danger" style="margin:0">
+
     </form>
 
     <table class="table table-bordered" id="results">
@@ -30,21 +103,78 @@
     	  	   	 <td>nombre</td>
     	  	   	 <td>categoria</td>
     	  	   	 <td>ubicación</td>    
-    	  	   	 <td>Descripción BBCODE</td>    	  	   		  	  
+    	  	   	 <td>Descripción BBCODE</td>  
+                 <td>precio</td>  	  	   		  	  
     	  	   	 <td>fecha de carga</td>	     	  	   	 
     	  	   	 <td>seguidores {[{...},...]}</td>
     	  	   	 <td>preguntas {[{...},...]}</td>
     	  	   	 <td>ofertas {[{...},...]}</td>
-    	  	   	 <td>ofertas {[{...},...]}</td>
-    	  	   	 <td>Recomendaciones {[{...},...]}</td>    	      	  	   		   	 
+    	  	   	 <td>garantía</td>
+    	  	   	 <td>Recomendaciones {[{...},...]}</td>    
+                 <td>imagenes</td>	      	  	   		   	 
     	  	   </tr>
-    	  </thead>
+    	   </thead>
     	  
     	  <tbody>
 
     	  </tbody>
 
     </table>
+
+    <br />
+
+    <button class="btn btn-primary navbar-fixed-top" style="border-radius:0" rel="togle-show">Cargar producto</button>
+
+ <div class="overlay">
+
+    <form action="" id="carga-art" class="togle-show">
+           <table>
+              <tboyd>
+                  
+                  <tr>
+                      <td>
+                         <span>Nombre</span><br/>                        
+                        <input type="text" value="nombre"></td>
+                      <td>
+                                                 <span>Categoria</span><br/>
+                        <select>
+                         <option value="prueba">Prueba</option>                                  
+                        </select>
+                     </td>
+                  </tr>
+
+                  <tr>
+                      <td><span>Ubicacion</span><br/><input type="text" value="ubicacion"></td>
+                      <td> 
+                         <span>Descripcion</span><br/>                        
+                        <input type="text" value="descripcion"></td>
+                  </tr>
+
+                  <tr>
+                      <td>
+                         <span>Ubicacion</span><br/>                        
+                        <input type="text" value="ubicacion"></td>
+                      <td>
+                         <span>Precio</span><br/>                        
+                        <input type="text" value="precio"></td>
+                  </tr>
+
+                  <tr>
+                      <td>                        
+                        <textarea>Métodos de Envío</textarea></td>
+                      <td><textarea>Garantía</textarea></td>
+                  </tr>
+
+                  <tr>
+                      <td colspan="2"><input type="file" ></td>
+                  </tr>
+
+              </tboyd>
+           </table>
+    </form>
+
+  </div>
+
 
 </body>
 </html>

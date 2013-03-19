@@ -6,10 +6,15 @@ var sck = 0;
 
 function buscar(data){
 
-	         
-      var coll = ["articulos"];
 
-      return data;
+	         
+       db.articulos.find({nombre : new RegExp(data.texto)  },function(err,resp){
+    
+                sck.emit("result", resp);
+
+
+       });
+           
 
 }
 

@@ -51,6 +51,14 @@ function utiles(){
      });
 
 
+     $("input[name='b_text']").keyup(function(){
+
+           if($(this).val() == "")
+              $("#results tbody").html("");
+
+     });
+
+
 }
 
 // ================== BUSCAR =======================
@@ -88,13 +96,38 @@ function buscar(){
   	socket.emit('buscar',data);
 
   	socket.on("result",function(data){
+  		  
+        var salida = "";
+        $("#results tbody").html(salida);
+   
+      for(i= 0 ; i < data.length ; i++) {
 
-  		  console.log("qlc-api > " + data.texto + " - socket_id : " + data.socket);
+        salida += " " +
 
+                +"<tr>"+  
 
-        $("#results tbody").html(" " +
-                +"<tr>  <td>" + data.socket + "</td> <td> " + data.texto + "</td> <td>" + data.socket + "</td> </tr>"+
-                                 +" ");
+                +"<td>" + data[i].id + "</td>" +
+                +"<td>" + data[i].nombre + "</td>" +
+                +"<td>" + data[i].categoria + "</td>" +
+                +"<td>" + data[i]._id + "</td>" +
+                +"<td>" + data[i].tipo + "</td>" +
+                +"<td>" + data[i].tipo + "</td>" +
+                +"<td>" + data[i].tipo + "</td>" +
+                +"<td>" + data[i].tipo + "</td>" +
+                +"<td>" + data[i].tipo + "</td>" +
+                +"<td>" + data[i].tipo + "</td>" +
+                +"<td>" + data[i].tipo + "</td>" +
+                +"<td>" + data[i].tipo + "</td>" +
+                +"<td>" + data[i].tipo + "</td>" +
+
+                +"</tr>"+
+                        
+                         +" ";                      
+
+      }
+
+              $("#results tbody").html(salida);
+      
 
   	});
     
