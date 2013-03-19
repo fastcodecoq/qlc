@@ -104,33 +104,25 @@ function buscar(){
    
       for(i= 0 ; i < data.length ; i++) {
 
-      $("#results tbody").append(
+      salida  = "<td>" + data[i].id.toString() + "</td> " 
+                +"<td>" + data[i].nombre + "</td> " 
+                +"<td>" + data[i].categoria + "</td> " 
+                +"<td>" + data[i]._id.toString() + "</td> " 
+                +"<td>" + data[i].tipo + "</td> " 
+                +"<td>" + data[i].tipo + "</td> " 
+                +"<td>" + data[i].tipo + "</td> " 
+                +"<td>" + data[i].tipo + "</td> " 
+                +"<td>" + data[i].tipo + "</td> " 
+                +"<td>" + data[i].tipo + "</td> " 
+                +"<td>" + data[i].tipo + "</td> " 
+                +"<td>" + data[i].tipo + "</td> " 
+                +"<td>" + data[i].tipo + "</td> "; 
 
-                +"<tr>"+  
-
-                +"<td>" + data[i].id.toString() + "</td>" +
-                +"<td>" + data[i].nombre + "</td>" +
-                +"<td>" + data[i].categoria + "</td>" +
-                +"<td>" + data[i]._id + "</td>" +
-                +"<td>" + data[i].tipo + "</td>" +
-                +"<td>" + data[i].tipo + "</td>" +
-                +"<td>" + data[i].tipo + "</td>" +
-                +"<td>" + data[i].tipo + "</td>" +
-                +"<td>" + data[i].tipo + "</td>" +
-                +"<td>" + data[i].tipo + "</td>" +
-                +"<td>" + data[i].tipo + "</td>" +
-                +"<td>" + data[i].tipo + "</td>" +
-                +"<td>" + data[i].tipo + "</td>" +
-
-                +"</tr>"+
-                        
-                        +" "
-
-                  );                    
+                $("table#results tbody").append("<tr> " +salida+ " </tr>");                  
 
       }
 
-             
+
       
 
   	});

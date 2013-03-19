@@ -26,7 +26,7 @@
       top:0;
       left:0;
       background: rgba(0,0,0,.20);
-      display:none;
+      z-index:100;      
 
    }
 
@@ -37,6 +37,8 @@
           border-radius: 3px;
           border: 1px solid #ebebeb;
           background: white;
+          max-height: 100%;
+          overflow: auto;
 
 
      }
@@ -45,12 +47,36 @@
         
           padding: 8px;
 
+      }    
+ 
+     .wrap{
+            
+              max-height: 300px !important;
+            overflow: auto;
+
      }
 
      table#results{
+          
+            width: 98%;
+            height: auto;
+            margin: 0 auto;
 
-            max-height: 300px !important;
-            overflow: auto;
+     }
+
+     .wrap-editor{
+    
+            padding: 50px 10px 10px 10px;
+            background: #ccc;
+
+     }
+
+
+     textarea.editor{
+
+                width: 98%;
+                height: 250px;
+                margin: 0 auto;
 
      }
 
@@ -60,22 +86,35 @@
       
       function togleShow(){
 
-        alert("ok")
 
-            $("button[rel='togle-show']").click(function(){
+            $("^[rel='togle-show']").click(function(){
 
-                    $(".togle-show").fadeIn();
+                    $(".togle-show").removeClass("hide");
+
+                       $(window).bind("keyup",function(e){
+
+                                if(e.which == 27){
+
+                                    $(this).unbind("keyup");
+                                    $(".togle-show").addClass("hide");
+
+                                }                                                                
+
+                        });
 
             });
 
 
-            $(document).ready(function(){
+         
+        
+      }
+
+        $(document).ready(function(){
 
                 togleShow();                
 
             });
 
-      }
 
 </script>
 
@@ -87,13 +126,17 @@
     <br />
     <br />
     <br />
+
+    <h1 style="font-size:1.2em">&nbsp; &nbsp;Panel API QLC</h1>
 	
     <form action="" id="buscador">
     	     
-    	     &nbsp;<input type="text" placeholder="Buscar producto" value="" name="b_text" />    	     
+    	     &nbsp; &nbsp;<input type="text" placeholder="Buscar producto" value="" name="b_text" />    	     
              <input type="button" value="Buscar" id="buscar" class="btn btn-danger" style="margin-top: -8px;">
 
     </form>
+
+    <div class="wrap">
 
     <table class="table table-bordered" id="results">
 
@@ -121,13 +164,19 @@
 
     </table>
 
+    </div>
+
     <br />
 
     <button class="btn btn-primary btn-large navbar-fixed-top" style="border-radius:0" rel="togle-show">Cargar producto</button>
 
- <div class="overlay">
+ <div class="overlay hide togle-show" >
 
-    <form action="" id="carga-art" class="togle-show">
+
+    <form action="" id="carga-art" class="row-fluid" >
+
+     <div class="span5">
+
            <table>
               <tboyd>
                   
@@ -144,10 +193,8 @@
                   </tr>
 
                   <tr>
-                      <td><span>Ubicacion</span><br/><input type="text" value="ubicacion"></td>
-                      <td> 
-                         <span>Descripcion</span><br/>                        
-                        <input type="text" value="descripcion"></td>
+                      <td colspan="2"><span>Ubicacion</span><br/><input type="text" value="ubicacion"></td>
+                      <td>         
                   </tr>
 
                   <tr>
@@ -166,12 +213,30 @@
                   </tr>
 
                   <tr>
-                      <td colspan="2"><input type="file" ></td>
+
+         <td colspan="2"> <iframe src="carga.html" frameborder="0" style="width:100%; height:80px"></iframe> </td>
+
                   </tr>
 
               </tboyd>
-           </table>
+           </table>           
+
+           <small>&nbsp;&nbsp;Presiona ESC para salir</small>
+
+            </div>
+
+            <div class="span5">
+                     <span>Descripción (Editor HTML / Texto Enrriquecido)</span>
+                     <div class="wrap-editor">
+                      <textarea class="editor">...</textarea>
+                     </div>
+
+            </div>
+
+
     </form>
+
+          
 
   </div>
 

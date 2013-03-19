@@ -6,45 +6,78 @@
 
 	<link rel="stylesheet" href="bootstrap/css/bootstrap-responsive.css" />
 
-
-    <script src="http://quienlocompra.com:9090/socket.io/socket.io.js"></script>
+    
     <script src="js/jquery.js"></script>
-    <script src="apps/buscador/consoleIE.js"></script>
-    <script src="apps/buscador/controlador.js"></script>
+    <script src="apps/buscador/consoleIE.js"></script>    
 
+<style>
+     
+      body{
+    
+         margin: 0 !important;
+         padding: 0 !important;
+
+      }
+
+      a.btn_cargar{
+
+            display: block;
+width: 100%;
+text-align: center;
+background: rgba(204, 204, 204, 0.88);
+padding: 10px 0;
+border-top: 2px dashed #999;
+color: rgba(0, 0, 0, 0.74);
+text-decoration: none;
+font-family: sans-serif;
+font-size: 0.8em;
+font-weight: bold;
+
+      }
+
+</style>
+
+
+ <script>
+
+        $(document).ready(function(){
+
+              $("input#fotos").change(function(){
+
+                   console.log($(this));
+
+              });
+
+
+              $("a[href*='#']").click(function(){
+
+                    cmd = $(this).attr("href").split("#")[1];
+
+                    switch(cmd){
+
+                            case "cargar":
+
+                                 
+
+                            break;
+
+                    }
+
+
+              });
+
+        });
+
+ </script>
 
 </head>
 <body>
 	
-    <form action="" id="buscador">
-    	
-    	     <input type="text" value="Buscar producto" name="b_text" />    	     
-             <input type="button" value="Buscar" id="buscar">
+    <a href="#cargar" class="btn_cargar">Subir Archivos</a>
+
+    <form action="apps/carga/cargar_p.php" method="post" enctype="multipart/form-data">
+      <input type="file" val="" name="fotos[]" multiple="multiple" maxLength="5" size="5" id="fotos" style="display:none"> 
     </form>
-
-    <table class="table table-bordered" id="results">
-
-    	  <thead>
-    	  	   <tr>
-    	  	   	 <td>id { id_pro: , id_user: , id_tienda: }</td>
-    	  	   	 <td>nombre</td>
-    	  	   	 <td>categoria</td>
-    	  	   	 <td>ubicación</td>    
-    	  	   	 <td>Descripción BBCODE</td>    	  	   		  	  
-    	  	   	 <td>fecha de carga</td>	     	  	   	 
-    	  	   	 <td>seguidores {[{...},...]}</td>
-    	  	   	 <td>preguntas {[{...},...]}</td>
-    	  	   	 <td>ofertas {[{...},...]}</td>
-    	  	   	 <td>ofertas {[{...},...]}</td>
-    	  	   	 <td>Recomendaciones {[{...},...]}</td>    	      	  	   		   	 
-    	  	   </tr>
-    	  </thead>
-    	  
-    	  <tbody>
-
-    	  </tbody>
-
-    </table>
 
 </body>
 </html>
